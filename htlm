@@ -29,7 +29,6 @@
     font-size: 15px;
   }
 
-  /* Navigation */
   header {
     padding: 40px 20px 20px;
     text-align: center;
@@ -69,7 +68,6 @@
 
   nav a:hover { color: var(--accent); }
 
-  /* Sections */
   section {
     padding: 80px 20px;
     text-align: center;
@@ -124,7 +122,6 @@
     padding-bottom: 2px;
   }
 
-  /* Photo placeholders */
   .photo-hero {
     max-width: 720px;
     height: 340px;
@@ -136,6 +133,7 @@
     color: var(--muted);
     font-size: 13px;
     letter-spacing: 1px;
+    overflow: hidden;
   }
 
   .photo-full {
@@ -148,9 +146,16 @@
     color: var(--muted);
     font-size: 13px;
     letter-spacing: 1px;
+    overflow: hidden;
   }
 
-  /* Footer */
+  .photo-hero img, .photo-full img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
   footer {
     background-color: var(--accent-dark);
     color: #d8d3c7;
@@ -199,7 +204,6 @@
     border-top: 1px solid rgba(255,255,255,0.1);
   }
 
-  /* Responsive */
   @media (max-width: 600px) {
     h1 { font-size: 32px; }
     h2 { font-size: 26px; }
@@ -225,16 +229,14 @@
   </nav>
 </header>
 
-<!-- Hero -->
 <section id="home">
   <div class="container">
     <h1>Welkom bij<br>ABC Alpacas</h1>
     <p class="subtitle">[ondertitel volgt]</p>
   </div>
-  <div class="photo-hero">foto placeholder</div>
+  <div class="photo-hero"><img src="images/alpaca placeholder 1.jfif" alt="Alpaca"></div>
 </section>
 
-<!-- Over ons -->
 <section id="over-ons">
   <div class="container">
     <h2>Over ons</h2>
@@ -243,9 +245,8 @@
   </div>
 </section>
 
-<div class="photo-full">foto placeholder</div>
+<div class="photo-full"><img src="images/alpaca placeholder 2.jpg" alt="Alpaca"></div>
 
-<!-- Activiteiten -->
 <section id="activiteiten">
   <div class="container">
     <h2>Activiteiten</h2>
@@ -255,9 +256,8 @@
   </div>
 </section>
 
-<div class="photo-full">foto placeholder</div>
+<div class="photo-full"><img src="images/alpaca placeholder 3.avif" alt="Alpaca"></div>
 
-<!-- Onze alpaca's -->
 <section id="alpacas">
   <div class="container">
     <h2>Onze alpaca's</h2>
@@ -268,7 +268,6 @@
 
 <div class="photo-full">foto placeholder</div>
 
-<!-- Bezoek ons -->
 <section id="bezoek">
   <div class="container">
     <h2>Bezoek ons</h2>
@@ -277,7 +276,6 @@
   </div>
 </section>
 
-<!-- Footer -->
 <footer id="contact">
   <h3>ABC Alpaca's</h3>
   <div class="footer-cols">
