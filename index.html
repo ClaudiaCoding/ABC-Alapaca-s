@@ -129,6 +129,107 @@
     margin-bottom: 16px;
   }
 
+  /* Form */
+  .form-intro {
+    max-width: 720px;
+    margin: 0 auto 40px;
+    text-align: left;
+  }
+
+  .form-intro p {
+    margin-bottom: 14px;
+  }
+
+  form.offerte-form {
+    max-width: 720px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 30px;
+    text-align: left;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-group.full {
+    grid-column: 1 / -1;
+  }
+
+  .form-group label {
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    color: var(--text);
+    margin-bottom: 8px;
+    font-weight: 400;
+  }
+
+  .form-group .required {
+    color: var(--accent);
+    margin-left: 2px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    background-color: #ffffff;
+    color: var(--text);
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    margin-top: auto;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--accent);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .submit-wrap {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  button.submit-btn {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--accent-dark);
+    color: #faf8f4;
+    border: none;
+    padding: 14px 48px;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background-color 0.2s;
+  }
+
+  button.submit-btn:hover {
+    background-color: var(--accent);
+  }
+
+  @media (max-width: 600px) {
+    form.offerte-form {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+  }
+
   .subtitle {
     font-style: italic;
     color: var(--muted);
@@ -319,7 +420,6 @@
     <h3 class="subheading">Schilderworkshop</h3>
     <p>Laat uw creativiteit tot leven komen tijdens onze gezellige workshop Schilderen tussen de Alpaca's op de Alpaca Farm in het pittoreske Haaften. Terwijl de alpaca's nieuwsgierig om u heen lopen, geniet u van een ontspannen en inspirerende sfeer op het platteland. Tijdens de workshop vertellen wij daarnaast leuke en interessante weetjes over onze alpaca's, zodat u deze bijzondere dieren nog beter leert kennen.</p>
     <p>Of u nu een ervaren kunstenaar bent of gewoon zin heeft in een gezellige activiteit, iedereen kan meedoen! Neem plaats tussen de alpaca's, pak een penseel en laat u inspireren.</p>
-    <a href="#" class="link">Bekijk alle activiteiten</a>
   </div>
 </section>
 
@@ -340,9 +440,52 @@
 <section id="bezoek">
   <div class="container">
     <h2>Bezoek ons</h2>
-    <p>[adres volgt]</p>
-    <p>[openingstijden volgen]</p>
+
+    <h3 class="subheading">Vraag een offerte aan</h3>
+    <div class="form-intro">
+      <p>Een aanvraag verplicht u tot niets, pas na uw bevestiging van onze offerte is de workshop definitief geboekt.</p>
+      <p>Na uw aanvraag nemen we contact op over de details zoals aantal deelnemers, verzorging, communicatie en uw eventuele extra wensen.</p>
+    </div>
   </div>
+  <form class="offerte-form" onsubmit="event.preventDefault();">
+    <div class="form-group">
+      <label for="naam">Naam<span class="required">*</span></label>
+      <input type="text" id="naam" name="naam" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email<span class="required">*</span></label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="telefoon">Telefoonnummer</label>
+      <input type="tel" id="telefoon" name="telefoon">
+    </div>
+    <div class="form-group">
+      <label for="workshop">Workshop</label>
+      <select id="workshop" name="workshop">
+        <option value="">Maak een keuze</option>
+        <option value="schilderworkshop">Schilderworkshop</option>
+        <option value="wandelen">Wandelen met alpaca's</option>
+        <option value="theehuis">Theehuis</option>
+        <option value="anders">Anders</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="deelnemers">Aantal deelnemers (ongeveer)</label>
+      <input type="number" id="deelnemers" name="deelnemers" min="1">
+    </div>
+    <div class="form-group">
+      <label for="datum">Selecteer een datum wanneer u de workshop zou willen hebben</label>
+      <input type="date" id="datum" name="datum">
+    </div>
+    <div class="form-group">
+      <label for="opmerkingen">Heeft u nog opmerkingen of wensen?</label>
+      <textarea id="opmerkingen" name="opmerkingen"></textarea>
+    </div>
+    <div class="submit-wrap">
+      <button type="submit" class="submit-btn">Verstuur aanvraag</button>
+    </div>
+  </form>
 </section>
 
 <!-- Footer -->
