@@ -31,9 +31,22 @@
 
   /* Navigation */
   header {
-    padding: 40px 20px 20px;
-    text-align: center;
+    padding: 20px 30px;
     background-color: var(--bg);
+    position: relative;
+  }
+
+  .header-logo {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    height: 60px;
+    width: auto;
+  }
+
+  .header-center {
+    text-align: center;
+    padding-top: 20px;
   }
 
   .logo {
@@ -220,17 +233,20 @@
 <body>
 
 <header>
-  <div class="logo">ABC Alpaca's</div>
-  <nav>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#over-ons">Over ons</a></li>
-      <li><a href="#activiteiten">Activiteiten</a></li>
-      <li><a href="#prijzen">Prijzen</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <img src="images/abc-alpacas-logo.png" alt="ABC Alpaca's logo" class="header-logo">
+  <div class="header-center">
+    <div class="logo">ABC Alpaca's</div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#over-ons">Over ons</a></li>
+        <li><a href="#activiteiten">Activiteiten</a></li>
+        <li><a href="#prijzen">Prijzen</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
 <!-- Hero -->
