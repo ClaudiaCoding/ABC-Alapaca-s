@@ -8,31 +8,26 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  /* Fade-in on scroll */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
-  }
-
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
+  /* ============================================
+     1. Variables
+     ============================================ */
   :root {
     --bg: #faf8f4;
     --text: #2a2a2a;
     --muted: #6b6b6b;
-    --accent: #3d5c3a;
-    --accent-dark: #2a3f27;
-    --placeholder-bg: #e8e4dc;
+    --accent: #2a3f27;
     --border: #e0dcd3;
+    --white: #ffffff;
+    --footer-text: #d8d3c7;
+    --footer-muted: #a8a396;
   }
+
+  /* ============================================
+     2. Base
+     ============================================ */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
 
   body {
     font-family: 'Inter', sans-serif;
@@ -43,7 +38,45 @@
     font-size: 15px;
   }
 
-  /* Navigation */
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 12px;
+    text-align: left;
+  }
+
+  h3.subheading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--accent);
+    text-align: left;
+    margin-top: 30px;
+    margin-bottom: 16px;
+  }
+
+  p {
+    color: var(--muted);
+    text-align: left;
+    margin-bottom: 16px;
+  }
+
+  /* ============================================
+     3. Layout
+     ============================================ */
   header {
     padding: 20px 30px;
     background-color: var(--bg);
@@ -94,7 +127,7 @@
     color: var(--text);
     font-size: 13px;
     letter-spacing: 0.5px;
-    transition: color 0.3s;
+    transition: color 0.3s, opacity 0.3s;
     position: relative;
     padding-bottom: 4px;
   }
@@ -112,77 +145,115 @@
     transition: transform 0.3s ease-out;
   }
 
-  nav a:hover { color: var(--accent); }
+  nav a:hover { opacity: 0.7; }
+  nav a.active { color: var(--accent); }
+  nav a.active::after { transform: scaleX(1); }
 
-  nav a.active {
-    color: var(--accent);
-  }
-
-  nav a.active::after {
-    transform: scaleX(1);
-  }
-
-  /* Sections */
   section {
     padding: 80px 20px;
     text-align: center;
     scroll-margin-top: 140px;
   }
 
+  #home { padding-bottom: 0; }
+
   .container {
     max-width: 720px;
     margin: 0 auto;
   }
 
-  h1 {
+  footer {
+    background-color: var(--accent);
+    color: var(--footer-text);
+    padding: 60px 20px 40px;
+    text-align: center;
+  }
+
+  footer h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 44px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    color: var(--accent-dark);
+    font-size: 20px;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    margin-bottom: 40px;
-    line-height: 1.2;
+    margin-bottom: 24px;
+    color: var(--bg);
   }
 
-  h2 {
+  .footer-cols {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 60px;
+    max-width: 720px;
+    margin: 0 auto 30px;
+    text-align: left;
+  }
+
+  .footer-cols div p {
+    color: var(--footer-text);
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .footer-cols h4 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 32px;
-    font-weight: 500;
-    color: var(--accent-dark);
+    font-size: 16px;
     margin-bottom: 12px;
-    text-align: left;
+    color: var(--bg);
+    letter-spacing: 1px;
   }
 
-  h3.subheading {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 500;
-    color: var(--accent-dark);
-    text-align: left;
+  .copyright {
+    font-size: 12px;
+    color: var(--footer-muted);
     margin-top: 30px;
-    margin-bottom: 16px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  /* ============================================
+     4. Components
+     ============================================ */
+
+  /* Photos */
+  .photo-hero {
+    max-width: 720px;
+    height: 340px;
+    margin: 40px auto 0;
+    overflow: hidden;
+  }
+
+  .photo-full {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+  }
+
+  .photo-hero img, .photo-full img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   /* Quote */
-  .quote-block {
-    text-align: center;
+  .quote-section {
     padding: 40px 20px 10px;
     max-width: 640px;
     margin: 0 auto;
+    scroll-margin-top: 140px;
   }
 
-  .quote-block blockquote {
+  .quote-section blockquote {
     font-family: 'Cormorant Garamond', serif;
     font-size: 18px;
     font-style: italic;
     font-weight: 400;
-    color: var(--accent-dark);
+    color: var(--accent);
     line-height: 1.4;
     margin-bottom: 10px;
   }
 
-  .quote-block cite {
+  .quote-section cite {
     font-family: 'Inter', sans-serif;
     font-size: 10px;
     letter-spacing: 2px;
@@ -191,10 +262,7 @@
     font-style: normal;
   }
 
-  @media (max-width: 600px) {
-    .quote-block { padding: 30px 20px 10px; }
-    .quote-block blockquote { font-size: 16px; }
-  }
+  /* Form */
   .form-intro {
     max-width: 720px;
     margin: 0 auto 40px;
@@ -219,10 +287,6 @@
     flex-direction: column;
   }
 
-  .form-group.full {
-    grid-column: 1 / -1;
-  }
-
   .form-group label {
     font-size: 13px;
     letter-spacing: 0.5px;
@@ -243,7 +307,7 @@
     font-size: 14px;
     padding: 10px 12px;
     border: 1px solid var(--border);
-    background-color: #ffffff;
+    background-color: var(--white);
     color: var(--text);
     border-radius: 2px;
     outline: none;
@@ -261,7 +325,6 @@
   .form-group textarea {
     resize: vertical;
     min-height: 100px;
-    font-family: 'Inter', sans-serif;
   }
 
   .submit-wrap {
@@ -272,8 +335,8 @@
 
   button.submit-btn {
     font-family: 'Inter', sans-serif;
-    background-color: var(--accent-dark);
-    color: #faf8f4;
+    background-color: var(--accent);
+    color: var(--bg);
     border: none;
     padding: 14px 48px;
     font-size: 14px;
@@ -281,137 +344,36 @@
     text-transform: uppercase;
     cursor: pointer;
     border-radius: 2px;
-    transition: background-color 0.2s;
+    transition: opacity 0.2s;
   }
 
   button.submit-btn:hover {
-    background-color: var(--accent);
+    opacity: 0.85;
   }
 
-  @media (max-width: 600px) {
-    form.offerte-form {
-      grid-template-columns: 1fr;
-      gap: 18px;
-    }
+  /* Fade-in on scroll */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
   }
 
-  .subtitle {
-    font-style: italic;
-    color: var(--muted);
-    font-size: 14px;
-    margin-bottom: 40px;
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
-  p {
-    color: var(--muted);
-    text-align: left;
-    margin-bottom: 16px;
-  }
-
-  .link {
-    display: inline-block;
-    margin-top: 20px;
-    color: var(--accent-dark);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 14px;
-    border-bottom: 1px solid var(--accent-dark);
-    padding-bottom: 2px;
-  }
-
-  /* Photo placeholders */
-  .photo-hero {
-    max-width: 720px;
-    height: 340px;
-    margin: 40px auto 0;
-    background-color: var(--placeholder-bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--muted);
-    font-size: 13px;
-    letter-spacing: 1px;
-  }
-
-  .photo-full {
-    width: 100%;
-    height: 320px;
-    background-color: var(--placeholder-bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--muted);
-    font-size: 13px;
-    letter-spacing: 1px;
-    overflow: hidden;
-  }
-
-  .photo-hero img, .photo-full img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  /* Footer */
-  footer {
-    background-color: var(--accent-dark);
-    color: #d8d3c7;
-    padding: 60px 20px 40px;
-    text-align: center;
-  }
-
-  footer h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-    color: #faf8f4;
-  }
-
-  .footer-cols {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 60px;
-    max-width: 720px;
-    margin: 0 auto 30px;
-    text-align: left;
-  }
-
-  .footer-cols div p {
-    color: #d8d3c7;
-    font-size: 13px;
-    margin-bottom: 6px;
-  }
-
-  .footer-cols h4 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 16px;
-    margin-bottom: 12px;
-    color: #faf8f4;
-    letter-spacing: 1px;
-  }
-
-  .copyright {
-    font-size: 12px;
-    color: #a8a396;
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-  }
-
-  /* Responsive */
+  /* ============================================
+     5. Media queries
+     ============================================ */
   @media (max-width: 600px) {
     h1 { font-size: 32px; }
     h2 { font-size: 26px; }
-    nav ul { gap: 18px; }
+
     section { padding: 60px 20px; }
-    .photo-hero, .photo-full { height: 220px; }
 
     header {
-      padding: 15px 15px;
+      padding: 15px;
       text-align: center;
     }
     .header-logo {
@@ -420,20 +382,24 @@
       margin: 0 auto 10px;
       height: 50px;
     }
-    .header-center {
-      padding-top: 0;
-    }
+    .header-center { padding-top: 0; }
     .logo {
       font-size: 18px;
       letter-spacing: 3px;
       margin-bottom: 15px;
       padding-bottom: 15px;
     }
-    nav ul {
-      gap: 12px 18px;
-    }
-    nav a {
-      font-size: 12px;
+    nav ul { gap: 12px 18px; }
+    nav a { font-size: 12px; }
+
+    .photo-hero, .photo-full { height: 220px; }
+
+    .quote-section { padding: 30px 20px 10px; }
+    .quote-section blockquote { font-size: 16px; }
+
+    form.offerte-form {
+      grid-template-columns: 1fr;
+      gap: 18px;
     }
   }
 </style>
@@ -456,17 +422,17 @@
 </header>
 
 <!-- Hero -->
-<section id="home" style="padding-bottom: 0;">
+<section id="home">
   <div class="container">
     <h1>Welkom bij<br>ABC Alpacas</h1>
   </div>
-  <div class="photo-hero"><img src="images/alpaca placeholder 1.jfif" alt="Alpaca"></div>
+  <figure class="photo-hero"><img src="images/alpaca placeholder 1.jfif" alt="Alpaca"></figure>
 </section>
 
-<div class="quote-block fade-in">
+<section class="quote-section fade-in">
   <blockquote>"Wij kwamen helemaal tot rust tussen de alpaca's."</blockquote>
   <cite>- Workshop deelnemer</cite>
-</div>
+</section>
 
 <!-- Over ons -->
 <section id="over-ons" class="fade-in">
@@ -479,7 +445,7 @@
   </div>
 </section>
 
-<div class="photo-full fade-in"><img src="images/alpaca placeholder 2.jpg" alt="Alpaca"></div>
+<figure class="photo-full fade-in"><img src="images/alpaca placeholder 2.jpg" alt="Alpaca"></figure>
 
 <!-- Activiteiten -->
 <section id="activiteiten" class="fade-in">
@@ -493,7 +459,7 @@
   </div>
 </section>
 
-<div class="photo-full fade-in"><img src="images/alpaca placeholder 3.avif" alt="Alpaca"></div>
+<figure class="photo-full fade-in"><img src="images/alpaca placeholder 3.avif" alt="Alpaca"></figure>
 
 <!-- Onze alpaca's -->
 <section id="alpacas" class="fade-in">
@@ -504,7 +470,7 @@
   </div>
 </section>
 
-<div class="photo-full fade-in"><img src="images/alpaca placeholder 4.jpeg" alt="Alpaca"></div>
+<figure class="photo-full fade-in"><img src="images/alpaca placeholder 4.jpeg" alt="Alpaca"></figure>
 
 <!-- Bezoek ons -->
 <section id="bezoek" class="fade-in">
