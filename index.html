@@ -12,6 +12,18 @@
 
   html { scroll-behavior: smooth; }
 
+  /* Fade-in on scroll */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   :root {
     --bg: #faf8f4;
     --text: #2a2a2a;
@@ -82,10 +94,33 @@
     color: var(--text);
     font-size: 13px;
     letter-spacing: 0.5px;
-    transition: color 0.2s;
+    transition: color 0.3s;
+    position: relative;
+    padding-bottom: 4px;
+  }
+
+  nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--accent);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease-out;
   }
 
   nav a:hover { color: var(--accent); }
+
+  nav a.active {
+    color: var(--accent);
+  }
+
+  nav a.active::after {
+    transform: scaleX(1);
+  }
 
   /* Sections */
   section {
@@ -129,7 +164,37 @@
     margin-bottom: 16px;
   }
 
-  /* Form */
+  /* Quote */
+  .quote-block {
+    text-align: center;
+    padding: 40px 20px 10px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .quote-block blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent-dark);
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+
+  .quote-block cite {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-style: normal;
+  }
+
+  @media (max-width: 600px) {
+    .quote-block { padding: 30px 20px 10px; }
+    .quote-block blockquote { font-size: 16px; }
+  }
   .form-intro {
     max-width: 720px;
     margin: 0 auto 40px;
@@ -398,8 +463,13 @@
   <div class="photo-hero"><img src="images/alpaca placeholder 1.jfif" alt="Alpaca"></div>
 </section>
 
+<div class="quote-block fade-in">
+  <blockquote>"Wij kwamen helemaal tot rust tussen de alpaca's."</blockquote>
+  <cite>- Workshop deelnemer</cite>
+</div>
+
 <!-- Over ons -->
-<section id="over-ons">
+<section id="over-ons" class="fade-in" style="padding-top: 30px;">
   <div class="container">
     <h2>Over ons</h2>
     <p>Van harte welkom op de website van ABC Alpaca's!</p>
@@ -409,10 +479,10 @@
   </div>
 </section>
 
-<div class="photo-full"><img src="images/alpaca placeholder 2.jpg" alt="Alpaca"></div>
+<div class="photo-full fade-in"><img src="images/alpaca placeholder 2.jpg" alt="Alpaca"></div>
 
 <!-- Activiteiten -->
-<section id="activiteiten">
+<section id="activiteiten" class="fade-in">
   <div class="container">
     <h2>Activiteiten</h2>
     <p>Altijd al eens tussen de alpaca's willen staan?</p>
@@ -423,10 +493,10 @@
   </div>
 </section>
 
-<div class="photo-full"><img src="images/alpaca placeholder 3.avif" alt="Alpaca"></div>
+<div class="photo-full fade-in"><img src="images/alpaca placeholder 3.avif" alt="Alpaca"></div>
 
 <!-- Onze alpaca's -->
-<section id="alpacas">
+<section id="alpacas" class="fade-in">
   <div class="container">
     <h2>Onze alpaca's</h2>
     <p>[tekst volgt]</p>
@@ -434,10 +504,10 @@
   </div>
 </section>
 
-<div class="photo-full"><img src="images/alpaca placeholder 4.jpeg" alt="Alpaca"></div>
+<div class="photo-full fade-in"><img src="images/alpaca placeholder 4.jpeg" alt="Alpaca"></div>
 
 <!-- Bezoek ons -->
-<section id="bezoek">
+<section id="bezoek" class="fade-in">
   <div class="container">
     <h2>Bezoek ons</h2>
 
@@ -506,6 +576,36 @@
   </div>
   <p class="copyright">&copy; 2026 ABC Alpaca's. Alle rechten voorbehouden.</p>
 </footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Active section in nav
+  const navLinks = document.querySelectorAll('nav a');
+  const sections = document.querySelectorAll('section[id]');
+
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  sections.forEach(sec => navObserver.observe(sec));
+</script>
 
 </body>
 </html>
