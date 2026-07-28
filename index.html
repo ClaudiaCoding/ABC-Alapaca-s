@@ -74,6 +74,29 @@
     margin-bottom: 16px;
   }
 
+  ul.activity-list {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 16px;
+    color: var(--muted);
+  }
+
+  ul.activity-list li {
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 6px;
+  }
+
+  ul.activity-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 8px;
+    height: 1px;
+    background-color: var(--accent);
+  }
+
   /* ============================================
      3. Layout
      ============================================ */
@@ -261,6 +284,20 @@
     display: block;
   }
 
+  .photo-inline {
+    max-width: 720px;
+    height: 300px;
+    margin: 30px auto;
+    overflow: hidden;
+  }
+
+  .photo-inline img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
   /* Quote */
   .quote-section {
     padding: 40px 20px 10px;
@@ -419,6 +456,7 @@
     nav a { font-size: 12px; }
 
     .photo-hero, .photo-full { height: 220px; }
+    .photo-inline { height: 200px; }
 
     .quote-section { padding: 30px 20px 10px; }
     .quote-section blockquote { font-size: 16px; }
@@ -452,7 +490,7 @@
   <div class="container">
     <h1>Welkom bij<br>ABC Alpacas</h1>
   </div>
-  <figure class="photo-hero"><img src="images/alpaca placeholder 1.jfif" alt="Alpaca"></figure>
+  <figure class="photo-hero"><img src="images/kind.JPG" alt="Alpaca"></figure>
 </section>
 
 <section class="quote-section fade-in">
@@ -478,14 +516,30 @@
   <div class="container">
     <h2>Activiteiten</h2>
     <p>Altijd al eens tussen de alpaca's willen staan?</p>
-    <p>Wij geven verschillende activiteiten op onze Alpaca Farm in pittoresk Haaften, Gelderland. Kom bijvoorbeeld wandelen met de alpaca's terwijl u leert over de omgeving en natuurlijk, onze dieren. Of stimuleer de creativiteit van vrienden, familieleden, of medewerkers met de workshop Schilderen met alpaca's. Liever alleen een hapje en een drankje? Ons theehuis tussen de alpaca's is deze lente en zomer voor u open!</p>
+    <p>Wij geven verschillende activiteiten op onze Alpaca Farm in pittoresk Haaften, Gelderland. Kom bijvoorbeeld wandelen met de alpaca's terwijl u leert over de omgeving en natuurlijk, onze dieren. Of stimuleer de creativiteit van vrienden, familieleden, of medewerkers met de workshop Schilderen met alpaca's. Zin in alleen een hapje en een drankje? Kom picknicken tussen de alpaca's.</p>
     <h3 class="subheading">Schilderworkshop</h3>
     <p>Laat uw creativiteit tot leven komen tijdens onze gezellige workshop Schilderen tussen de Alpaca's op de Alpaca Farm in het pittoreske Haaften. Terwijl de alpaca's nieuwsgierig om u heen lopen, geniet u van een ontspannen en inspirerende sfeer op het platteland. Tijdens de workshop vertellen wij daarnaast leuke en interessante weetjes over onze alpaca's, zodat u deze bijzondere dieren nog beter leert kennen.</p>
     <p>Of u nu een ervaren kunstenaar bent of gewoon zin heeft in een gezellige activiteit, iedereen kan meedoen! Neem plaats tussen de alpaca's, pak een penseel en laat u inspireren.</p>
+    <p>Voor meer informatie over de prijs of vragen kunt u eenvoudig het contactformulier invullen; wij nemen zo snel mogelijk contact met u op.</p>
+    <figure class="photo-inline fade-in"><img src="images/schilderen wideshot.JPG" alt="Schilderworkshop tussen de alpaca's"></figure>
+    <h3 class="subheading">Picknick</h3>
+    <p>Op zoek naar een bijzondere plek om samen te genieten van een heerlijke lunch? Kom picknicken tussen onze nieuwsgierige en vriendelijke alpaca's op de Alpaca Farm in het pittoreske Haaften.</p>
+    <p>Neem plaats in de weide, omringd door onze rustige kudde, en geniet van een compleet verzorgde picknick in een ontspannen landelijke omgeving. Terwijl u geniet van al het lekkers, lopen de alpaca's nieuwsgierig om u heen. Natuurlijk vertellen wij u ook graag leuke en interessante weetjes over onze dieren, zodat u ze nog beter leert kennen.</p>
+    <p>Of u nu een gezellige middag plant met familie, vrienden of collega's, een picknick tussen de alpaca's is een unieke belevenis voor jong en oud. Er is alle tijd om foto's te maken, de alpaca's van dichtbij te bewonderen en helemaal tot rust te komen.</p>
+    <p>Inclusief:</p>
+    <ul class="activity-list">
+      <li>Een compleet verzorgde picknick</li>
+      <li>Koffie, thee, limonade en andere lekkernijen</li>
+      <li>Leuke weetjes over onze alpaca's</li>
+      <li>Volop gelegenheid om foto's te maken</li>
+    </ul>
+    <p>Een unieke combinatie van natuur, ontspanning, gezelligheid en natuurlijk... onze lieve alpaca's!</p>
+    <p>Voor meer informatie over de prijs of vragen kunt u eenvoudig het contactformulier invullen; wij nemen zo snel mogelijk contact met u op.</p>
+    <figure class="photo-inline fade-in"><img src="images/picknick tables shot.JPG" alt="Picknick tussen de alpaca's"></figure>
   </div>
 </section>
 
-<figure class="photo-full fade-in"><img src="images/alpaca placeholder 3.avif" alt="Alpaca"></figure>
+<figure class="photo-full fade-in"><img src="images/accessibility.JPG" alt="Alpaca"></figure>
 
 <!-- Onze alpaca's -->
 <section id="alpacas" class="fade-in">
